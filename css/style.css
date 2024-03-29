@@ -168,8 +168,6 @@ body {
   box-shadow: var(--box-shadow);
 }
 
-.tasks {}
-
 .section-title {
   text-align: center;
   font-weight: 500;
@@ -289,10 +287,6 @@ body {
   grid-row: span 2;
 }
 
-.notes__list {}
-
-.notes__item {}
-
 .notes__item:not(:last-child) {
   margin-bottom: 10px;
 }
@@ -309,8 +303,6 @@ body {
 .note-busket {
   margin-left: auto;
 }
-
-.form {}
 
 .form__label {
   display: block;
@@ -382,7 +374,6 @@ body {
     font-size: 14px;
   }
 }
-
 
 @media (max-width: 600px) {
   .header {
@@ -486,7 +477,4 @@ body {
   .tabs__item:not(:last-child) {
     margin-bottom: 0;
   }
-
-
-
 }
