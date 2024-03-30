@@ -63,6 +63,15 @@
   --padding-media: 5px;
 }
 
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 10px;
+}
+
 html,
 body {
   font-family: var(--font-main);
@@ -154,6 +163,7 @@ body {
 .tasks,
 .notes,
 .notes__item,
+.tabs__content,
 .tabs__item,
 .tabs__block,
 .form,
@@ -175,14 +185,19 @@ body {
 
 .tabs {
   width: 100%;
+  height: 320px;
   display: flex;
   justify-content: space-between;
   gap: 5px;
 }
 
 .tabs__list {
-  flex: 1 0 120px;
+  height: 100%;
+  flex: 0 0 120px;
   max-width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .tabs__item {
@@ -191,10 +206,6 @@ body {
   font-size: clamp(14px, 1.2vw, 20px);
   cursor: pointer;
   transition: .3s;
-}
-
-.tabs__item:not(:last-child) {
-  margin-bottom: 5px;
 }
 
 .tabs__item:hover {
@@ -208,13 +219,13 @@ body {
 
 .tabs__content {
   width: 85%;
+  flex-grow: 100;
+  overflow-y: scroll;
 }
 
 .block {
   display: none;
-  padding: var(--padding);
-  border-radius: var(--border-radius);
-  box-shadow: var(--box-shadow);
+
 }
 
 .block.active {
@@ -284,6 +295,12 @@ body {
 
 .notes {
   grid-row: span 2;
+}
+
+.notes__list {
+  width: 100%;
+  height: 120px;
+  overflow-y: scroll;
 }
 
 .notes__item:not(:last-child) {
@@ -362,6 +379,7 @@ body {
   .app,
   .tasks,
   .notes,
+  .tabs__content,
   .block__item,
   .form {
     padding: var(--padding-media);
@@ -407,6 +425,10 @@ body {
     order: 2;
   }
 
+  .tabs {
+    height: 240px;
+  }
+
   .tabs__list {
     flex: 1 0 10%;
   }
@@ -429,6 +451,10 @@ body {
 
 @media (max-width: 440px) {
 
+  .title {
+    line-height: 1;
+  }
+
   .time {
     flex-direction: column-reverse;
     gap: var(--padding-media);
@@ -438,9 +464,20 @@ body {
     width: 20%;
   }
 
+  .form__input,
+  .form__textarea {
+    margin-bottom: 5px;
+  }
+
+  .time,
+  .block,
+  .notes__list {
+    padding: 0;
+  }
+
   .block__item {
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 87% 10%;
     gap: 3px;
   }
 
@@ -449,15 +486,32 @@ body {
     grid-column: span 2;
   }
 
+  .block__item-time {
+    width: 15%;
+    padding: 2px;
+  }
+
   .block__item-label {
     margin-left: auto;
   }
 
   .block__item-busket {
-    justify-self: end;
+    justify-self: center;
+  }
+
+  .block__item-decor,
+  .block__item-busket {
+    width: 20px;
+    height: 20px;
+  }
+
+  .block__item-checkbox:checked+.block__item-decor::before {
+    width: 20px;
+    height: 20px;
   }
 
   .tabs {
+    height: 240px;
     flex-direction: column;
   }
 
@@ -467,8 +521,7 @@ body {
 
   .tabs__list {
     max-width: 100%;
-    flex-basis: 100%;
-    display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 3px;
   }
