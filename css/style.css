@@ -243,17 +243,20 @@ body {
 }
 
 .block__item-text {
-  width: 75%;
+  width: 100%;
+  word-break: break-all;
   padding: var(--padding);
 }
 
 .block__item-label {
   position: relative;
+  display: flex;
 }
 
 .block__item-checkbox {
-  position: fixed;
-  transform: scale(0);
+  appearance: none;
+  /* position: fixed;
+  transform: scale(0); */
 }
 
 .block__item-decor {
@@ -316,6 +319,7 @@ body {
 
 .notes__text {
   margin-bottom: 10px;
+  word-break: break-all;
 }
 
 .note-busket {
